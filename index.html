@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alphabet Guessing Game</title>
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- tailwind and daisyUI link -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+            backgroundImage: {
+              "container-bg":
+                "linear-gradient(180deg, #E855DE -7.9%, #6C0EEB 36.64%, rgba(84, 0, 238, 0.34) 68.89%);",
+              "artBoard-bg": "rgba(255, 255, 255, 0.70)",
+              "score-bg":
+                "linear-gradient(121deg, rgba(255, 255, 255, 0.56) 0%, rgba(152, 151, 151, 0.00) 102.2%)",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body
+    class="bg-[#010313] min-h-screen bg-[url(./images/background.png)] bg-no-repeat bg-center"
+  >
+    <header></header>
+    <main class="flex lg:flex-col h-[100vh] justify-center items-center">
+      <!-- play now part -->
+      <section id="play-now-section" class="text-center">
+        <h1 class="text-white text-[170px] anton-regular">Alphabet Clash</h1>
+        <p class="text-white text-2xl poppins-medium mb-7">
+          Unleash Your Keyboard Kung Fu : Press “Enter” to Play
+        </p>
+        <button
+          onclick="startGame()"
+          class="bg-white rounded-lg px-5 py-2 text-2xl text-[#010313] poppins-semibold"
+        >
+          Play Now
+        </button>
+      </section>
+
+      <!-- playground part -->
+      <section id="playground-section" class="hidden">
+        <!-- Display -->
+        <div
+          class="artboard artboard-horizontal phone-6 bg-white bg-opacity-[70%] border-[20px] border-[#010313] border-opacity-[80%] relative flex lg:flex-row justify-center"
+        >
+          <div
+            class="content absolute h-[30px] w-[400px] bg-[#2F2941] px-[28px]"
+          >
+            <p class="text-white poppins-medium text-[18px]">
+              Don't watch keyboard while playing...
+            </p>
+          </div>
+          <p
+            class="flex flex-row items-center text-[#010313] text-[128px] poppins-semibold"
+          >
+            <span id="artBoard-alphabet" class="uppercase">Y</span>
+          </p>
+        </div>
+        <!-- keyboard -->
+        <div class="mt-12">
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="q" class="kbd">q</kbd>
+            <kbd id="w" class="kbd">w</kbd>
+            <kbd id="e" class="kbd">e</kbd>
+            <kbd id="r" class="kbd">r</kbd>
+            <kbd id="t" class="kbd">t</kbd>
+            <kbd id="y" class="kbd">y</kbd>
+            <kbd id="u" class="kbd">u</kbd>
+            <kbd id="i" class="kbd">i</kbd>
+            <kbd id="o" class="kbd">o</kbd>
+            <kbd id="p" class="kbd">p</kbd>
+          </div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="a" class="kbd">a</kbd>
+            <kbd id="s" class="kbd">s</kbd>
+            <kbd id="d" class="kbd">d</kbd>
+            <kbd id="f" class="kbd">f</kbd>
+            <kbd id="g" class="kbd">g</kbd>
+            <kbd id="h" class="kbd">h</kbd>
+            <kbd id="j" class="kbd">j</kbd>
+            <kbd id="k" class="kbd">k</kbd>
+            <kbd id="l" class="kbd">l</kbd>
+          </div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd id="z" class="kbd">z</kbd>
+            <kbd id="x" class="kbd">x</kbd>
+            <kbd id="c" class="kbd">c</kbd>
+            <kbd id="v" class="kbd">v</kbd>
+            <kbd id="b" class="kbd">b</kbd>
+            <kbd id="n" class="kbd">n</kbd>
+            <kbd id="m" class="kbd">m</kbd>
+            <kbd id="/" class="kbd">/</kbd>
+          </div>
+        </div>
+        <!-- Score -->
+        <div class="mt-16 flex justify-between">
+          <button
+            class="bg-[#894189] rounded-[30px] py-4 px-7 text-white text-[20px] font-inter"
+          >
+            Life
+            <img src="./images/life.png" alt="" class="inline-block" />
+            <span id="life">5</span>
+          </button>
+          <button
+            class="bg-[#360490] rounded-[30px] py-4 px-7 text-white text-[20px] font-inter"
+          >
+            Score
+            <img src="./images/score.png" alt="" class="inline-block" />
+            <span id="score">0</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Final Score -->
+      <section id="final-score" class="hidden">
+        <div
+          class="space-y-3 text-center bg-score-bg p-[44px] rounded-2xl border"
+        >
+          <h4 class="text-white text-[64px] poppins-extrabold">Score: <span id="ultimate-score">0</span></h4>
+          <button
+          onclick="restartGame()"
+            class="bg-white rounded-lg px-5 py-2 text-2xl text-[#010313] poppins-semibold"
+          >
+            Play Now
+          </button>
+          <p class="text-white text-[20px] poppins-medium">
+            Practice will make you Pro
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+
+    <script src="js/game.js"></script>
+  </body>
+</html>
